@@ -11,16 +11,20 @@ class JogoDeBoliche {
     ;
     ObterPontuacao() {
         let pontuacao = 0;
-        let b = 0;
-        for (let i = 0; i < 10; i++) {
+        let pontosDaJogada = 0;
+        for (let pontos = 0; pontos < 10; pontos++) {
             //Calculo do Spare
-            if (this.jogadas[b] + this.jogadas[b + 1] === 10) {
-                pontuacao += 10 + this.jogadas[b + 2];
-                b += 2;
+            if (this.jogadas[pontosDaJogada] === 10) {
+                pontuacao += 10 + this.jogadas[pontosDaJogada + 1] + this.jogadas[pontosDaJogada + 2];
+                pontosDaJogada++;
+            }
+            else if (this.jogadas[pontosDaJogada] + this.jogadas[pontosDaJogada + 1] === 10) {
+                pontuacao += 10 + this.jogadas[pontosDaJogada + 2];
+                pontosDaJogada += 2;
             }
             else {
-                pontuacao += this.jogadas[b];
-                b += 2;
+                pontuacao += this.jogadas[pontosDaJogada];
+                pontosDaJogada += 2;
             }
         }
         return this.pontos = pontuacao;

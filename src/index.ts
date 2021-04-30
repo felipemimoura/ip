@@ -9,16 +9,19 @@ class JogoDeBoliche {
 
   ObterPontuacao(): number {
     let pontuacao = 0
-    let b = 0
+    let pontosDaJogada = 0
+    for (let pontos = 0; pontos < 10; pontos++) {
+      
+      if (this.jogadas[pontosDaJogada] === 10) {
+        pontuacao += 10 + this.jogadas[pontosDaJogada + 1] + this.jogadas[pontosDaJogada + 2]
+        pontosDaJogada++
 
-    for (let i = 0; i < 10; i++) {
-      //Calculo do Spare
-      if (this.jogadas[b] + this.jogadas[b + 1] === 10) {
-        pontuacao += 10 + this.jogadas[b + 2]
-        b +=2
-      }else{
-        pontuacao += this.jogadas[b]
-        b += 2
+      } else if (this.jogadas[pontosDaJogada] + this.jogadas[pontosDaJogada + 1] === 10) {
+        pontuacao += 10 + this.jogadas[pontosDaJogada + 2]
+        pontosDaJogada += 2
+      } else {
+        pontuacao += this.jogadas[pontosDaJogada]
+        pontosDaJogada += 2
       }
     }
     return this.pontos = pontuacao
@@ -27,7 +30,7 @@ class JogoDeBoliche {
 
 
 const jogo = new JogoDeBoliche()
-jogo.Jogar(5)
+jogo.Jogar(10)
 jogo.Jogar(5)
 jogo.Jogar(3)
 console.log(jogo.ObterPontuacao())
