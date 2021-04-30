@@ -11,10 +11,19 @@ class JogoDeBoliche {
     ;
     ObterPontuacao() {
         let pontuacao = 0;
-        for (let i = 0; i < this.jogadas.length; i++) {
-            pontuacao += this.jogadas[i];
+        let b = 0;
+        for (let i = 0; i < 10; i++) {
+            //Calculo do Spare
+            if (this.jogadas[b] + this.jogadas[b + 1] === 10) {
+                pontuacao += 10 + this.jogadas[b + 2];
+                b += 2;
+            }
+            else {
+                pontuacao += this.jogadas[b];
+                b += 2;
+            }
         }
-        return pontuacao;
+        return this.pontos = pontuacao;
     }
 }
 const jogo = new JogoDeBoliche();
