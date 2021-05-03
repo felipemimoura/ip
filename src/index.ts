@@ -33,11 +33,6 @@ class JogoDeBoliche {
 }
 
 
-const jogo = new JogoDeBoliche()
-jogo.Jogar(6)
-jogo.Jogar(3)
 
 
 
-
-console.log(jogo.ObterPontuacao())
